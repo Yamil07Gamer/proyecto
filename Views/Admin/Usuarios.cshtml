@@ -1,0 +1,63 @@
+@model List<Usuario>
+@{
+    ViewData["Title"] = "Permisos de administrador";
+    var idSesion = (int)(ViewData["IdSesion"] ?? 0);
+}
+
+<h1 class="h3 mb-1">Permisos de administrador</h1>
+<p class="texto-tenue mb-3">Para subir o bajar a un usuario se te pedirá tu contraseña.</p>
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle table-oscura">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr class="@(u.Activo ? "" : "opacity-50")">
+                    <td>
+                        @u.Nombre
+                        @if (u.Id == idSesion) { <span class="badge text-bg-info ms-1">Tú</span> }
+                    </td>
+                    <td class="texto-tenue">@u.Correo</td>
+                    <td>
+                        @if (u.EsAdmin)
+                        {
+                            <span class="badge text-bg-warning">Admin</span>
+                        }
+                        else
+                        {
+                            <span class="badge text-bg-secondary">Cliente</span>
+                        }
+                    </td>
+                    <td>@(u.Activo ? "Activo" : "Dado de baja")</td>
+                    <td class="text-end">
+                        @if (!u.Activo)
+                        {
+                            <span class="texto-tenue small">—</span>
+                        }
+                        else if (u.EsAdmin)
+                        {
+                            <a class="btn btn-sm btn-outline-danger" asp-action="CambiarPermiso" asp-route-id="@u.Id" asp-route-ascender="false">
+                                <i class="bi bi-arrow-down-circle"></i> Quitar admin
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm btn-outline-light" asp-action="CambiarPermiso" asp-route-id="@u.Id" asp-route-ascender="true">
+                                <i class="bi bi-arrow-up-circle"></i> Hacer admin
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

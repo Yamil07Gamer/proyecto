@@ -1,0 +1,63 @@
+@model List<Stock>
+@{
+    ViewData["Title"] = "Stock";
+    var sinStock = (int)(ViewData["ConsolasSinStock"] ?? 0);
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+    <h1 class="h3 mb-0">Stock</h1>
+    @if (sinStock > 0)
+    {
+        <a class="btn btn-primary" asp-action="CrearStock"><i class="bi bi-plus-square me-1"></i> Nuevo stock</a>
+    }
+</div>
+
+@if (sinStock > 0)
+{
+    <div class="alert alert-info">
+        Hay @sinStock consola(s) sin registro de stock; no aparecerán en la tienda hasta que se les dé stock.
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle table-oscura">
+        <thead>
+            <tr>
+                <th>Consola</th>
+                <th>Modelo</th>
+                <th class="text-end">Existencias</th>
+                <th class="text-end">Precio unitario</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.Consola</td>
+                    <td class="texto-tenue">@s.Modelo</td>
+                    <td class="text-end">
+                        @if (s.Existencias == 0)
+                        {
+                            <span class="badge text-bg-danger">Agotado</span>
+                        }
+                        else if (s.Existencias <= 5)
+                        {
+                            <span class="badge text-bg-warning">@s.Existencias</span>
+                        }
+                        else
+                        {
+                            @s.Existencias
+                        }
+                    </td>
+                    <td class="text-end">@s.PrecioUnitario.ToString("C", new System.Globalization.CultureInfo("es-MX"))</td>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-light" asp-action="EditarStock" asp-route-id="@s.Id">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

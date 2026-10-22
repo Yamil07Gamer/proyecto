@@ -1,0 +1,103 @@
+@model Consola
+@{
+    // Sirve para crear (Id = 0) y para editar
+    var editando = Model.Id > 0;
+    var accion = editando ? "EditarConsola" : "CrearConsola";
+}
+
+<div class="panel" style="max-width: 760px;">
+    <div class="panel-titulo">
+        <i class="bi @(editando ? "bi-pencil-square" : "bi-plus-circle")"></i>
+        <h1>@(editando ? "Editar consola" : "Nueva consola")</h1>
+    </div>
+
+    <form asp-action="@accion" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+        <input type="hidden" asp-for="Id">
+
+        <div class="row g-3">
+            <div class="col-md-8">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" placeholder="Ej. PlayStation 5">
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Anio" class="form-label"></label>
+                <input asp-for="Anio" class="form-control" placeholder="2020">
+                <span asp-validation-for="Anio" class="text-danger small"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Modelo" class="form-label"></label>
+                <input asp-for="Modelo" class="form-control" placeholder="CFI-1115A">
+                <span asp-validation-for="Modelo" class="text-danger small"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Generacion" class="form-label"></label>
+                <input asp-for="Generacion" class="form-control" placeholder="gen 9">
+                <span asp-validation-for="Generacion" class="text-danger small"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Region" class="form-label"></label>
+                <select asp-for="Region" class="form-select">
+                    <option value="">Sin región</option>
+                    <option value="americana">Americana</option>
+                    <option value="europea">Europea</option>
+                    <option value="asiatica">Asiática</option>
+                </select>
+                <span asp-validation-for="Region" class="text-danger small"></span>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="Imagen" class="form-label"></label>
+                <input asp-for="Imagen" class="form-control" id="campoImagen" placeholder="/img/console/ps5.png  o  https://...">
+                <div class="form-text">Puede ser una ruta dentro del proyecto (wwwroot/img/console) o un link de internet.</div>
+                <span asp-validation-for="Imagen" class="text-danger small"></span>
+            </div>
+
+            <div class="col-12">
+                <div class="imagen-consola-vacia rounded" id="vistaPrevia">
+                    <i class="bi bi-image"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save me-1"></i> @(editando ? "Guardar cambios" : "Crear consola")
+            </button>
+            <a class="btn btn-outline-light" asp-action="Consolas">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Vista previa de la imagen mientras se escribe la ruta o URL
+        (function () {
+            const campo = document.getElementById('campoImagen');
+            const vista = document.getElementById('vistaPrevia');
+            const base = '@Url.Content("~/")';
+
+            function actualizar() {
+                let ruta = campo.value.trim();
+                vista.innerHTML = '';
+                if (!ruta) {
+                    vista.innerHTML = '<i class="bi bi-image"></i>';
+                    return;
+                }
+                if (ruta.startsWith('~/')) ruta = base + ruta.substring(2);
+                const img = document.createElement('img');
+                img.src = ruta;
+                img.alt = 'Vista previa';
+                img.style.maxHeight = '100%';
+                img.style.maxWidth = '100%';
+                img.onerror = () => { vista.innerHTML = '<span class="small">No se encontró la imagen</span>'; };
+                vista.appendChild(img);
+            }
+
+            campo.addEventListener('input', actualizar);
+            actualizar();
+        })();
+    </script>
+}

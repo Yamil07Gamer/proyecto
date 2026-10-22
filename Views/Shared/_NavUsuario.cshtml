@@ -1,0 +1,80 @@
+@*
+    Botones de la derecha del navbar:
+    - "Iniciar sesión": solo aparece si NO hay sesión.
+    - Logo de perfil: menú desplegable con Mi cuenta y Funciones adicionales.
+*@
+@{
+    var haySesion = SesionUsuario.HaySesion(Context.Session);
+    var esAdmin = SesionUsuario.EsAdmin(Context.Session);
+}
+
+<div class="d-flex align-items-center gap-2 ms-lg-auto mt-2 mt-lg-0">
+    @if (!haySesion)
+    {
+        <a class="btn btn-primary btn-sm px-3" asp-controller="Sesion" asp-action="Login">
+            <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
+        </a>
+    }
+
+    <div class="dropdown">
+        <button class="btn btn-perfil" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menú de perfil">
+            <i class="bi bi-person-circle"></i>
+            @if (haySesion)
+            {
+                <span class="d-none d-sm-inline ms-1 small">@SesionUsuario.NombreCorto(Context.Session)</span>
+            }
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end shadow" data-bs-theme="dark">
+            @if (haySesion)
+            {
+                <li>
+                    <span class="dropdown-item-text small text-body-secondary">
+                        @SesionUsuario.Nombre(Context.Session)
+                        @if (esAdmin) { <span class="badge text-bg-warning ms-1">Admin</span> }
+                    </span>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+            }
+
+            <li>
+                <a class="dropdown-item" asp-controller="Sesion" asp-action="MiUsuario">
+                    <i class="bi bi-person me-2"></i>Mi cuenta
+                </a>
+            </li>
+
+            <li><hr class="dropdown-divider"></li>
+            <li><h6 class="dropdown-header">Funciones adicionales</h6></li>
+            <li>
+                <a class="dropdown-item" asp-controller="MiCompra" asp-action="Index">
+                    <i class="bi bi-cart3 me-2"></i>Comprar consolas
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="MiCompra" asp-action="Historial">
+                    <i class="bi bi-receipt me-2"></i>Mis compras
+                </a>
+            </li>
+            @if (esAdmin)
+            {
+                <li>
+                    <a class="dropdown-item" asp-controller="Admin" asp-action="Index">
+                        <i class="bi bi-speedometer2 me-2"></i>Panel de administrador
+                    </a>
+                </li>
+            }
+
+            @if (haySesion)
+            {
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <form asp-controller="Sesion" asp-action="CerrarSesion" method="post">
+                        <button type="submit" class="dropdown-item text-danger">
+                            <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
+                        </button>
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+@model CrearUsuarioViewModel
+@{
+    ViewData["Title"] = "Crear usuario";
+}
+
+<div class="panel panel-medio">
+    <div class="panel-titulo">
+        <i class="bi bi-person-plus"></i>
+        <h1>Crear usuario</h1>
+    </div>
+
+    <form asp-controller="CrearUsuario" asp-action="Index" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label">Nombre completo</label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ej. Juan Pérez" autocomplete="name">
+            <span asp-validation-for="Nombre" class="text-danger small"></span>
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label asp-for="Correo" class="form-label">Correo electrónico</label>
+                <input asp-for="Correo" class="form-control" placeholder="nombre@ejemplo.com" autocomplete="email">
+                <span asp-validation-for="Correo" class="text-danger small"></span>
+            </div>
+            <div class="col-sm-6">
+                <label asp-for="Telefono" class="form-label"></label>
+                <input asp-for="Telefono" class="form-control" placeholder="9611000000" autocomplete="tel">
+                <span asp-validation-for="Telefono" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+                <label asp-for="Contrasenia" class="form-label"></label>
+                <input asp-for="Contrasenia" class="form-control" autocomplete="new-password">
+                <span asp-validation-for="Contrasenia" class="text-danger small"></span>
+            </div>
+            <div class="col-sm-6">
+                <label asp-for="ConfirmarContrasenia" class="form-label"></label>
+                <input asp-for="ConfirmarContrasenia" class="form-control" autocomplete="new-password">
+                <span asp-validation-for="ConfirmarContrasenia" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-person-check me-1"></i> Crear cuenta
+            </button>
+            <a class="btn btn-outline-light" asp-controller="Sesion" asp-action="Login">Ya tengo cuenta</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

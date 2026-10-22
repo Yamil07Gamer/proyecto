@@ -1,0 +1,53 @@
+@model StockFormViewModel
+@{
+    // Sirve para crear (Id = 0) y para editar
+    var editando = Model.Id > 0;
+    var accion = editando ? "EditarStock" : "CrearStock";
+}
+
+<div class="panel" style="max-width: 560px;">
+    <div class="panel-titulo">
+        <i class="bi @(editando ? "bi-pencil-square" : "bi-plus-square")"></i>
+        <h1>@(editando ? "Editar stock" : "Nuevo stock")</h1>
+    </div>
+
+    <form asp-action="@accion" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+        <input type="hidden" asp-for="Id">
+
+        <div class="mb-3">
+            <label asp-for="IdConsola" class="form-label"></label>
+            <select asp-for="IdConsola" asp-items="Model.Consolas" class="form-select">
+                <option value="0">Selecciona una consola...</option>
+            </select>
+            <span asp-validation-for="IdConsola" class="text-danger small"></span>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+                <label asp-for="Existencias" class="form-label"></label>
+                <input asp-for="Existencias" class="form-control" type="number" min="0" step="1">
+                <span asp-validation-for="Existencias" class="text-danger small"></span>
+            </div>
+            <div class="col-sm-6">
+                <label asp-for="PrecioUnitario" class="form-label"></label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input asp-for="PrecioUnitario" class="form-control" type="number" min="0.01" step="0.01">
+                </div>
+                <span asp-validation-for="PrecioUnitario" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save me-1"></i> @(editando ? "Guardar cambios" : "Registrar stock")
+            </button>
+            <a class="btn btn-outline-light" asp-action="Stock">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

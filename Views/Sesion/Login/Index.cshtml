@@ -1,0 +1,50 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Iniciar sesión";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+
+<div class="panel panel-angosto">
+    <div class="panel-titulo">
+        <i class="bi bi-person-lock"></i>
+        <h1>Iniciar sesión</h1>
+    </div>
+
+    <form asp-controller="Sesion" asp-action="Login" asp-route-returnUrl="@returnUrl" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Correo" class="form-label">Correo electrónico</label>
+            <input asp-for="Correo" class="form-control" placeholder="nombre@ejemplo.com" autocomplete="email" autofocus>
+            <span asp-validation-for="Correo" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Contrasenia" class="form-label"></label>
+            <input asp-for="Contrasenia" class="form-control" autocomplete="current-password">
+            <span asp-validation-for="Contrasenia" class="text-danger small"></span>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary flex-fill">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
+            </button>
+            <a class="btn btn-outline-light flex-fill" asp-controller="CrearUsuario" asp-action="Index">
+                <i class="bi bi-person-plus me-1"></i> Crear usuario
+            </a>
+        </div>
+    </form>
+
+    @* Solo para pruebas mientras la base de datos está en comentario. Borrar al final. *@
+    <details class="mt-4 small texto-tenue">
+        <summary>Usuarios de prueba</summary>
+        <ul class="mt-2 mb-0">
+            <li>Admin: yalexeicparedes@gmail.com / admin1234</li>
+            <li>Normal: ana.perez@correo.com / 1234</li>
+        </ul>
+    </details>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

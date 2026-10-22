@@ -1,0 +1,52 @@
+@model List<Consola>
+@{
+    ViewData["Title"] = "Consolas";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+    <h1 class="h3 mb-0">Consolas</h1>
+    <a class="btn btn-primary" asp-action="CrearConsola"><i class="bi bi-plus-circle me-1"></i> Nueva consola</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle table-oscura">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nombre</th>
+                <th>Año</th>
+                <th>Modelo</th>
+                <th>Generación</th>
+                <th>Región</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(c.Imagen))
+                        {
+                            <img src="@Url.Content(c.Imagen)" alt="@c.Nombre" class="miniatura">
+                        }
+                        else
+                        {
+                            <span class="miniatura d-inline-flex align-items-center justify-content-center texto-tenue"><i class="bi bi-controller"></i></span>
+                        }
+                    </td>
+                    <td>@c.Nombre</td>
+                    <td>@c.Anio</td>
+                    <td>@c.Modelo</td>
+                    <td>@c.Generacion</td>
+                    <td class="text-capitalize">@c.Region</td>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-light" asp-action="EditarConsola" asp-route-id="@c.Id">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,99 @@
+@model CompraViewModel
+@{
+    ViewData["Title"] = "Confirmar compra";
+    var mx = new System.Globalization.CultureInfo("es-MX");
+    var p = Model.Producto!;
+    var subtotal = p.PrecioUnitario * Model.Cantidad;
+    var iva = Math.Round(subtotal * Model.TasaIva, 2);
+    var inv = System.Globalization.CultureInfo.InvariantCulture;
+}
+
+<div class="panel" style="max-width: 820px; margin: 1rem auto;">
+    <div class="panel-titulo">
+        <i class="bi bi-cart-check"></i>
+        <h1>Confirmar compra</h1>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-5">
+            @if (!string.IsNullOrWhiteSpace(p.Imagen))
+            {
+                <img src="@Url.Content(p.Imagen)" class="rounded w-100 imagen-producto" alt="@p.Consola">
+            }
+            else
+            {
+                <div class="imagen-consola-vacia rounded"><i class="bi bi-controller"></i></div>
+            }
+            <h2 class="h5 mt-3 mb-1">@p.Consola</h2>
+            <p class="texto-tenue small mb-1">@p.Modelo</p>
+            <p class="small mb-0">@p.Existencias disponibles</p>
+        </div>
+
+        <div class="col-md-7">
+            <form asp-action="Confirmar" method="post" novalidate>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+                <input type="hidden" asp-for="IdConsola">
+
+                <div class="mb-3" style="max-width: 200px;">
+                    <label asp-for="Cantidad" class="form-label"></label>
+                    <input asp-for="Cantidad" class="form-control" type="number" min="1" max="@p.Existencias" step="1" id="cantidad">
+                    <span asp-validation-for="Cantidad" class="text-danger small"></span>
+                </div>
+
+                <table class="w-100 tabla-calculo mb-4">
+                    <tr>
+                        <td>Precio unitario</td>
+                        <td class="text-end">@p.PrecioUnitario.ToString("C", mx)</td>
+                    </tr>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td class="text-end" id="subtotal">@subtotal.ToString("C", mx)</td>
+                    </tr>
+                    <tr>
+                        <td>IVA (@((Model.TasaIva * 100).ToString("0")) %)</td>
+                        <td class="text-end" id="iva">@iva.ToString("C", mx)</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total</td>
+                        <td class="text-end precio" id="total">@((subtotal + iva).ToString("C", mx))</td>
+                    </tr>
+                </table>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary flex-fill">
+                        <i class="bi bi-bag-check me-1"></i> Comprar
+                    </button>
+                    <a class="btn btn-outline-light" asp-action="Index">Seguir viendo</a>
+                </div>
+                <p class="small texto-tenue mt-2 mb-0">Los montos finales los calcula el servidor al confirmar.</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Recalcula subtotal, IVA y total al cambiar la cantidad (solo visual)
+        (function () {
+            const precio = @p.PrecioUnitario.ToString(inv);
+            const tasa = @Model.TasaIva.ToString(inv);
+            const maximo = @p.Existencias;
+            const moneda = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+            const campo = document.getElementById('cantidad');
+
+            function recalcular() {
+                let cantidad = parseInt(campo.value, 10);
+                if (isNaN(cantidad) || cantidad < 1) cantidad = 0;
+                if (cantidad > maximo) cantidad = maximo;
+                const subtotal = precio * cantidad;
+                const iva = Math.round(subtotal * tasa * 100) / 100;
+                document.getElementById('subtotal').textContent = moneda.format(subtotal);
+                document.getElementById('iva').textContent = moneda.format(iva);
+                document.getElementById('total').textContent = moneda.format(subtotal + iva);
+            }
+
+            campo.addEventListener('input', recalcular);
+        })();
+    </script>
+}

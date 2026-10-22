@@ -1,0 +1,73 @@
+@model AdminInicioViewModel
+@{
+    ViewData["Title"] = "Panel de administrador";
+}
+
+<h1 class="h3 mb-4">Hola, @SesionUsuario.NombreCorto(Context.Session)</h1>
+
+<div class="row g-3 mb-4">
+    <div class="col-6 col-xl-3">
+        <div class="tarjeta-metrica h-100">
+            <div class="texto-tenue small">Consolas</div>
+            <div class="valor">@Model.TotalConsolas</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-3">
+        <div class="tarjeta-metrica h-100">
+            <div class="texto-tenue small">Unidades en stock</div>
+            <div class="valor">@Model.UnidadesEnStock</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-3">
+        <div class="tarjeta-metrica h-100">
+            <div class="texto-tenue small">Usuarios activos</div>
+            <div class="valor">@Model.TotalUsuarios</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-3">
+        <div class="tarjeta-metrica h-100">
+            <div class="texto-tenue small">Administradores</div>
+            <div class="valor">@Model.TotalAdmins</div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-2 mb-4">
+    <a class="btn btn-primary" asp-action="CrearConsola"><i class="bi bi-plus-circle me-1"></i> Nueva consola</a>
+    <a class="btn btn-outline-light" asp-action="CrearStock"><i class="bi bi-plus-square me-1"></i> Nuevo stock</a>
+    <a class="btn btn-outline-light" asp-action="Usuarios"><i class="bi bi-people me-1"></i> Permisos de admin</a>
+</div>
+
+<h2 class="h5 mb-3">Stock bajo (5 o menos)</h2>
+@if (Model.StockBajo.Count == 0)
+{
+    <p class="texto-tenue">Todas las consolas tienen más de 5 unidades.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle table-oscura">
+            <thead>
+                <tr>
+                    <th>Consola</th>
+                    <th class="text-end">Existencias</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.StockBajo)
+                {
+                    <tr>
+                        <td>@s.Consola <span class="texto-tenue small">@s.Modelo</span></td>
+                        <td class="text-end">
+                            <span class="badge @(s.Existencias == 0 ? "text-bg-danger" : "text-bg-warning")">@s.Existencias</span>
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" asp-action="EditarStock" asp-route-id="@s.Id">Reabastecer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

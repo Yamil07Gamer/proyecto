@@ -1,0 +1,46 @@
+@model List<CompraHistorial>
+@{
+    ViewData["Title"] = "Mis compras";
+    var mx = new System.Globalization.CultureInfo("es-MX");
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+    <h1 class="h2 mb-0">Mis compras</h1>
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="bi bi-bag me-1"></i> Ir a la tienda</a>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="panel text-center">
+        <i class="bi bi-bag-x texto-tenue" style="font-size: 2.5rem;"></i>
+        <p class="mt-2 mb-0">Todavía no tienes compras.</p>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle table-oscura">
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Consola</th>
+                    <th class="text-end">Cantidad</th>
+                    <th class="text-end">Subtotal</th>
+                    <th class="text-end">Total con IVA</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>#@c.Folio</td>
+                        <td>@c.Consola</td>
+                        <td class="text-end">@c.Cantidad</td>
+                        <td class="text-end">@c.Subtotal.ToString("C", mx)</td>
+                        <td class="text-end">@c.TotalVenta.ToString("C", mx)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

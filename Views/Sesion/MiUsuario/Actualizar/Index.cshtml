@@ -1,0 +1,45 @@
+@model ActualizarUsuarioViewModel
+@{
+    ViewData["Title"] = "Actualizar información";
+}
+
+<div class="panel panel-medio">
+    <div class="panel-titulo">
+        <i class="bi bi-pencil-square"></i>
+        <h1>Actualizar información</h1>
+    </div>
+    <p class="texto-tenue">Solo puedes cambiar tus propios datos. La contraseña se cambia en <a asp-controller="Sesion" asp-action="Secret">Cambiar contraseña</a>.</p>
+
+    <form asp-controller="Sesion" asp-action="Actualizar" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label"></label>
+            <input asp-for="Nombre" class="form-control" autocomplete="name">
+            <span asp-validation-for="Nombre" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Telefono" class="form-label"></label>
+            <input asp-for="Telefono" class="form-control" autocomplete="tel">
+            <span asp-validation-for="Telefono" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Correo" class="form-label">Correo electrónico</label>
+            <input asp-for="Correo" class="form-control" autocomplete="email">
+            <span asp-validation-for="Correo" class="text-danger small"></span>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save me-1"></i> Guardar cambios
+            </button>
+            <a class="btn btn-outline-light" asp-controller="Sesion" asp-action="MiUsuario">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,59 @@
+@model CambiarPermisoViewModel
+@{
+    ViewData["Title"] = Model.Ascender ? "Hacer administrador" : "Quitar administrador";
+}
+
+<div class="panel" style="max-width: 520px;">
+    <div class="panel-titulo">
+        <i class="bi @(Model.Ascender ? "bi-arrow-up-circle" : "bi-arrow-down-circle")"></i>
+        <h1>@ViewData["Title"]</h1>
+    </div>
+
+    <p>
+        @if (Model.Ascender)
+        {
+            <text>Vas a dar permisos de administrador a</text>
+        }
+        else
+        {
+            <text>Vas a quitar los permisos de administrador a</text>
+        }
+        <strong>@Model.NombreUsuario</strong>
+        @if (!string.IsNullOrEmpty(Model.CorreoUsuario))
+        {
+            <span class="texto-tenue">(@Model.CorreoUsuario)</span>
+        }.
+    </p>
+
+    @if (!Model.Ascender && Model.IdUsuario == SesionUsuario.Id(Context.Session))
+    {
+        <div class="alert alert-warning py-2">
+            Te estás quitando los permisos a ti mismo: perderás el acceso a este panel.
+        </div>
+    }
+
+    <form asp-action="CambiarPermiso" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+        <input type="hidden" asp-for="IdUsuario">
+        <input type="hidden" asp-for="NombreUsuario">
+        <input type="hidden" asp-for="CorreoUsuario">
+        <input type="hidden" asp-for="Ascender">
+
+        <div class="mb-4">
+            <label asp-for="ContraseniaAdmin" class="form-label"></label>
+            <input asp-for="ContraseniaAdmin" class="form-control" autocomplete="current-password" autofocus>
+            <span asp-validation-for="ContraseniaAdmin" class="text-danger small"></span>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn @(Model.Ascender ? "btn-primary" : "btn-danger")">
+                <i class="bi bi-shield-check me-1"></i> Confirmar
+            </button>
+            <a class="btn btn-outline-light" asp-action="Usuarios">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!--
+    BASE DE DATOS (desactivado por ahora)
+    Al conectar SQL Server, quitar el comentario o instalar desde NuGet:
+      dotnet add package Microsoft.Data.SqlClient
+  -->
+  <!--
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+  </ItemGroup>
+  -->
+
+</Project>

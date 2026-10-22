@@ -1,0 +1,73 @@
+@*
+    Layout del panel de administrador: barra lateral pegada a la izquierda.
+    En pantallas chicas la barra se abre con el botón "Menú de administrador".
+*@
+@{
+    Layout = "_Principal";
+    ViewData["AnchoCompleto"] = true;
+
+    var accion = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+    string Activo(params string[] acciones) =>
+        acciones.Contains(accion, StringComparer.OrdinalIgnoreCase) ? "active" : "";
+}
+
+<div class="admin-contenedor">
+    <aside class="offcanvas-lg offcanvas-start admin-sidebar" tabindex="-1" id="sidebarAdmin" aria-labelledby="sidebarAdminTitulo">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarAdminTitulo">Administrador</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAdmin" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="offcanvas-body flex-column p-3">
+            <div class="admin-sidebar-titulo d-none d-lg-block">
+                <i class="bi bi-shield-lock me-1"></i> Administrador
+            </div>
+
+            <nav class="nav nav-pills flex-column gap-1">
+                <a class="nav-link @Activo("Index")" asp-controller="Admin" asp-action="Index">
+                    <i class="bi bi-speedometer2"></i> Inicio
+                </a>
+
+                <span class="admin-sidebar-seccion">Consolas</span>
+                <a class="nav-link @Activo("Consolas", "EditarConsola")" asp-controller="Admin" asp-action="Consolas">
+                    <i class="bi bi-controller"></i> Ver consolas
+                </a>
+                <a class="nav-link @Activo("CrearConsola")" asp-controller="Admin" asp-action="CrearConsola">
+                    <i class="bi bi-plus-circle"></i> Nueva consola
+                </a>
+
+                <span class="admin-sidebar-seccion">Inventario</span>
+                <a class="nav-link @Activo("Stock", "EditarStock")" asp-controller="Admin" asp-action="Stock">
+                    <i class="bi bi-box-seam"></i> Ver stock
+                </a>
+                <a class="nav-link @Activo("CrearStock")" asp-controller="Admin" asp-action="CrearStock">
+                    <i class="bi bi-plus-square"></i> Nuevo stock
+                </a>
+
+                <span class="admin-sidebar-seccion">Usuarios</span>
+                <a class="nav-link @Activo("Usuarios", "CambiarPermiso")" asp-controller="Admin" asp-action="Usuarios">
+                    <i class="bi bi-people"></i> Permisos de admin
+                </a>
+
+                <hr class="my-2">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-house"></i> Volver al inicio
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <section class="admin-contenido">
+        <button class="btn btn-outline-light btn-sm d-lg-none mb-3" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#sidebarAdmin" aria-controls="sidebarAdmin">
+            <i class="bi bi-list"></i> Menú de administrador
+        </button>
+
+        <partial name="_Alertas" />
+        @RenderBody()
+    </section>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}
