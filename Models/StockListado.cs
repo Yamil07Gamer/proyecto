@@ -1,7 +1,8 @@
 namespace proyecto.Models;
 
-// Resultado de sp_listar_stock (stock + datos de la consola)
-public class Stock
+// Resultado de sp_listar_stock (stock + datos de la consola).
+// No es la tabla stock: esa es proyecto.Data.Entidades.Stock
+public class StockListado
 {
     public int Id { get; set; }
     public int IdConsola { get; set; }

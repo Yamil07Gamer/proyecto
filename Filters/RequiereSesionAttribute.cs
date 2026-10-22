@@ -24,7 +24,7 @@ public class RequiereSesionAttribute : ActionFilterAttribute
         var db = http.RequestServices.GetRequiredService<VentaConsolasDb>();
         var usuario = db.ObtenerUsuario(id.Value);
 
-        if (usuario is null || !usuario.Activo)
+        if (usuario is null || usuario.Activo != true)
         {
             SesionUsuario.Cerrar(http.Session);
             context.Result = IrAlLogin(http);

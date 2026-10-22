@@ -1,139 +1,148 @@
 is_global = true
 build_property.TargetFramework = net10.0
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v10.0
+build_property.TargetFramework = net10.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.EntryPointFilePath = 
 build_property.RootNamespace = proyecto
 build_property.RootNamespace = proyecto
-build_property.ProjectDir = /mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/
+build_property.ProjectDir = C:\Users\César\Downloads\proyecto personal pweb\proyecto\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.RazorLangVersion = 9.0
+build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto
+build_property.MSBuildProjectDirectory = C:\Users\César\Downloads\proyecto personal pweb\proyecto
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/CambiarPermiso.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ2FtYmlhclBlcm1pc28uY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/CambiarPermiso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FtYmlhclBlcm1pc28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/ConsolaForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29uc29sYUZvcm0uY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/ConsolaForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29uc29sYUZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/Consolas.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29uc29sYXMuY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/Consolas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29uc29sYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/Stock.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU3RvY2suY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/Stock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RvY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/StockForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU3RvY2tGb3JtLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/StockForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RvY2tGb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/Usuarios.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVXN1YXJpb3MuY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXN1YXJpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Admin/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Admin/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/CrearUsuario/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXJVc3VhcmlvL0luZGV4LmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/CrearUsuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXJVc3VhcmlvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/MiCompra/Confirmar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWlDb21wcmEvQ29uZmlybWFyLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/MiCompra/Confirmar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlDb21wcmFcQ29uZmlybWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/MiCompra/Historial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWlDb21wcmEvSGlzdG9yaWFsLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/MiCompra/Historial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlDb21wcmFcSGlzdG9yaWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/MiCompra/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWlDb21wcmEvSW5kZXguY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/MiCompra/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlDb21wcmFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/MiCompra/Ticket.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWlDb21wcmEvVGlja2V0LmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/MiCompra/Ticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlDb21wcmFcVGlja2V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Sesion/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VzaW9uL0luZGV4LmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Sesion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VzaW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Sesion/Login/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VzaW9uL0xvZ2luL0luZGV4LmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Sesion/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VzaW9uXExvZ2luXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Sesion/MiUsuario/Actualizar/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VzaW9uL01pVXN1YXJpby9BY3R1YWxpemFyL0luZGV4LmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Sesion/MiUsuario/Actualizar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VzaW9uXE1pVXN1YXJpb1xBY3R1YWxpemFyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Sesion/MiUsuario/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VzaW9uL01pVXN1YXJpby9JbmRleC5jc2h0bWw=
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Sesion/MiUsuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VzaW9uXE1pVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Sesion/MiUsuario/Secret/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VzaW9uL01pVXN1YXJpby9TZWNyZXQvSW5kZXguY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Sesion/MiUsuario/Secret/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VzaW9uXE1pVXN1YXJpb1xTZWNyZXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/_AdminLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pbkxheW91dC5jc2h0bWw=
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/_Alertas.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BbGVydGFzLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/_Alertas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbGVydGFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/_NavUsuario.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19OYXZVc3VhcmlvLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/_NavUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/_Principal.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19QcmluY2lwYWwuY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/_Principal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QcmluY2lwYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/9C0AF8FD0AF8D56C/Documentos/para la pc gamer master race XDXDXDXD/universidad/5 semestre/programacion web/proyecto final personal/proyecto/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-3jsepre39x
+[C:/Users/César/Downloads/proyecto personal pweb/proyecto/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-v7mii02mcm

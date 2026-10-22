@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using proyecto.Data;
+using proyecto.Data.Entidades;
 using proyecto.Filters;
 using proyecto.Models;
 using proyecto.Models.ViewModels;
@@ -33,8 +34,8 @@ public class AdminController : Controller
         var vm = new AdminInicioViewModel
         {
             TotalConsolas = _db.ListarConsolas().Count,
-            TotalUsuarios = usuarios.Count(u => u.Activo),
-            TotalAdmins = usuarios.Count(u => u.Activo && u.EsAdmin),
+            TotalUsuarios = usuarios.Count(u => u.Activo == true),
+            TotalAdmins = usuarios.Count(u => u.Activo == true && u.Esadmin == true),
             UnidadesEnStock = stock.Sum(s => s.Existencias),
             StockBajo = stock.Where(s => s.Existencias <= 5).OrderBy(s => s.Existencias).ToList()
         };
@@ -250,7 +251,7 @@ public class AdminController : Controller
             return RedirectToAction(nameof(Usuarios));
         }
 
-        if (usuario.EsAdmin == ascender)
+        if ((usuario.Esadmin == true) == ascender)
         {
             TempData["Error"] = ascender
                 ? $"{usuario.Nombre} ya es administrador."

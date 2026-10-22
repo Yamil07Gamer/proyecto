@@ -21,6 +21,12 @@ builder.Services.AddHttpContextAccessor();
 // ("ConnectionStrings:VentaConsolas") y se puede cambiar a AddScoped.
 builder.Services.AddSingleton<VentaConsolasDb>();
 
+// Contexto generado con el scaffold (Data/InventarioContext.cs). Desactivado por ahora.
+// Como se generó con --no-onconfiguring, la conexión se configura aquí:
+// builder.Services.AddDbContext<proyecto.Data.InventarioContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("VentaConsolas")));
+// (requiere: using Microsoft.EntityFrameworkCore;)
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

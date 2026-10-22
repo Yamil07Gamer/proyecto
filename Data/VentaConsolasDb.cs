@@ -1,3 +1,4 @@
+using proyecto.Data.Entidades;
 using proyecto.Models;
 using proyecto.Models.ViewModels;
 // using System.Data;
@@ -73,7 +74,7 @@ public class VentaConsolasDb
                 x.Contrasenia == contrasenia);
 
             if (u is null) return null;
-            if (!u.Activo) throw new ErrorNegocio("Tu cuenta está dada de baja.");
+            if (u.Activo != true) throw new ErrorNegocio("Tu cuenta está dada de baja.");
             return Copia(u);
         }
     }
@@ -135,7 +136,7 @@ public class VentaConsolasDb
                 Telefono = Limpio(vm.Telefono),
                 Correo = vm.Correo.Trim(),
                 Contrasenia = vm.Contrasenia,
-                EsAdmin = false,
+                Esadmin = false,
                 Activo = true
             };
             _usuarios.Add(u);
@@ -216,7 +217,7 @@ public class VentaConsolasDb
         lock (_candado)
         {
             var u = UsuarioDeSesion(idSesion);
-            if (u.EsAdmin && _usuarios.Count(x => x.EsAdmin && x.Activo) == 1)
+            if (u.Esadmin == true && _usuarios.Count(x => x.Esadmin == true && x.Activo == true) == 1)
                 throw new ErrorNegocio("No se puede dar de baja al último administrador activo.");
             u.Activo = false;
         }
@@ -290,8 +291,8 @@ public class VentaConsolasDb
             ValidarAdmin(idSesion);
             var u = _usuarios.FirstOrDefault(x => x.Id == id)
                     ?? throw new ErrorNegocio("El usuario no existe.");
-            if (!u.Activo) throw new ErrorNegocio("El usuario está dado de baja.");
-            u.EsAdmin = true;
+            if (u.Activo != true) throw new ErrorNegocio("El usuario está dado de baja.");
+            u.Esadmin = true;
         }
     }
 
@@ -315,9 +316,9 @@ public class VentaConsolasDb
             ValidarAdmin(idSesion);
             var u = _usuarios.FirstOrDefault(x => x.Id == id)
                     ?? throw new ErrorNegocio("El usuario no existe.");
-            if (u.EsAdmin && u.Activo && _usuarios.Count(x => x.EsAdmin && x.Activo) == 1)
+            if (u.Esadmin == true && u.Activo == true && _usuarios.Count(x => x.Esadmin == true && x.Activo == true) == 1)
                 throw new ErrorNegocio("No se puede quitar el permiso al último administrador activo.");
-            u.EsAdmin = false;
+            u.Esadmin = false;
         }
     }
 
@@ -456,7 +457,7 @@ public class VentaConsolasDb
     // =============================================================
 
     // sp_listar_stock
-    public List<Stock> ListarStock()
+    public List<StockListado> ListarStock()
     {
         /* ===== BASE DE DATOS =====
         return Ejecutar(() =>
@@ -464,7 +465,7 @@ public class VentaConsolasDb
             using var cn = Conectar();
             using var cmd = Procedimiento(cn, "sp_listar_stock");
             using var dr = cmd.ExecuteReader();
-            var lista = new List<Stock>();
+            var lista = new List<StockListado>();
             while (dr.Read()) lista.Add(LeerStock(dr));
             return lista;
         });
@@ -476,7 +477,7 @@ public class VentaConsolasDb
             return (from s in _stock
                     join c in _consolas on s.IdConsola equals c.Id
                     orderby c.Nombre
-                    select new Stock
+                    select new StockListado
                     {
                         Id = s.Id,
                         IdConsola = c.Id,
@@ -490,9 +491,9 @@ public class VentaConsolasDb
     }
 
     // Un registro de stock (se filtra el resultado de sp_listar_stock)
-    public Stock? ObtenerStock(int id) => ListarStock().FirstOrDefault(x => x.Id == id);
+    public StockListado? ObtenerStock(int id) => ListarStock().FirstOrDefault(x => x.Id == id);
 
-    public Stock? ObtenerStockPorConsola(int idConsola) =>
+    public StockListado? ObtenerStockPorConsola(int idConsola) =>
         ListarStock().FirstOrDefault(x => x.IdConsola == idConsola);
 
     // sp_stock_crear (solo admin)
@@ -605,7 +606,7 @@ public class VentaConsolasDb
             if (cantidad <= 0) throw new ErrorNegocio("La cantidad debe ser mayor a 0.");
             var u = _usuarios.FirstOrDefault(x => x.Id == idUsuario)
                     ?? throw new ErrorNegocio("El usuario no existe.");
-            if (!u.Activo) throw new ErrorNegocio("El usuario está dado de baja.");
+            if (u.Activo != true) throw new ErrorNegocio("El usuario está dado de baja.");
             var c = _consolas.FirstOrDefault(x => x.Id == idConsola)
                     ?? throw new ErrorNegocio("La consola no existe.");
             var s = _stock.FirstOrDefault(x => x.IdConsola == idConsola)
@@ -728,7 +729,7 @@ public class VentaConsolasDb
         Nombre = dr.GetString(dr.GetOrdinal("nombre")),
         Telefono = Texto(dr, "telefono"),
         Correo = Texto(dr, "correo"),
-        EsAdmin = !dr.IsDBNull(dr.GetOrdinal("esadmin")) && dr.GetBoolean(dr.GetOrdinal("esadmin")),
+        Esadmin = !dr.IsDBNull(dr.GetOrdinal("esadmin")) && dr.GetBoolean(dr.GetOrdinal("esadmin")),
         Activo = !dr.IsDBNull(dr.GetOrdinal("activo")) && dr.GetBoolean(dr.GetOrdinal("activo"))
     };
 
@@ -743,7 +744,7 @@ public class VentaConsolasDb
         Imagen = Texto(dr, "imagen")
     };
 
-    private static Stock LeerStock(SqlDataReader dr) => new Stock
+    private static StockListado LeerStock(SqlDataReader dr) => new StockListado
     {
         Id = dr.GetInt32(dr.GetOrdinal("id")),
         IdConsola = dr.GetInt32(dr.GetOrdinal("id_consola")),
@@ -792,7 +793,7 @@ public class VentaConsolasDb
         new() { Id = 8,  Nombre = "Diego Torres",    Telefono = "9611000008", Correo = "diego.torres@correo.com",    Contrasenia = "1234" },
         new() { Id = 9,  Nombre = "Valeria Ramírez", Telefono = "9611000009", Correo = "valeria.ramirez@correo.com", Contrasenia = "1234" },
         new() { Id = 10, Nombre = "Andrés Flores",   Telefono = "9611000010", Correo = "andres.flores@correo.com",   Contrasenia = "1234" },
-        new() { Id = 11, Nombre = "Yamil Alexei",    Telefono = "9611000011", Correo = "yalexeicparedes@gmail.com",  Contrasenia = "admin1234", EsAdmin = true }
+        new() { Id = 11, Nombre = "Yamil Alexei",    Telefono = "9611000011", Correo = "yalexeicparedes@gmail.com",  Contrasenia = "admin1234", Esadmin = true }
     };
 
     private readonly List<Consola> _consolas = new()
@@ -831,13 +832,13 @@ public class VentaConsolasDb
 
     private Usuario UsuarioDeSesion(int idSesion)   // sp_validar_sesion
     {
-        var u = _usuarios.FirstOrDefault(x => x.Id == idSesion && x.Activo);
+        var u = _usuarios.FirstOrDefault(x => x.Id == idSesion && x.Activo == true);
         return u ?? throw new ErrorNegocio("Sesión no válida: el usuario no existe o está dado de baja.");
     }
 
     private void ValidarAdmin(int idSesion)          // sp_validar_admin
     {
-        if (!UsuarioDeSesion(idSesion).EsAdmin)
+        if (UsuarioDeSesion(idSesion).Esadmin != true)
             throw new ErrorNegocio("Solo un administrador puede realizar esta acción.");
     }
 
@@ -881,7 +882,7 @@ public class VentaConsolasDb
     private static Usuario Copia(Usuario u) => new()
     {
         Id = u.Id, Nombre = u.Nombre, Telefono = u.Telefono, Correo = u.Correo,
-        Contrasenia = u.Contrasenia, EsAdmin = u.EsAdmin, Activo = u.Activo
+        Contrasenia = u.Contrasenia, Esadmin = u.Esadmin, Activo = u.Activo
     };
 
     private static Consola Copia(Consola c) => new()

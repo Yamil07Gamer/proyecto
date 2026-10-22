@@ -1,4 +1,4 @@
-using proyecto.Models;
+using proyecto.Data.Entidades;
 
 namespace proyecto.Filters;
 
@@ -14,7 +14,7 @@ public static class SesionUsuario
     {
         sesion.SetInt32(ClaveId, usuario.Id);
         sesion.SetString(ClaveNombre, usuario.Nombre);
-        sesion.SetInt32(ClaveAdmin, usuario.EsAdmin ? 1 : 0);
+        sesion.SetInt32(ClaveAdmin, usuario.Esadmin == true ? 1 : 0);
     }
 
     public static void Cerrar(ISession sesion) => sesion.Clear();
