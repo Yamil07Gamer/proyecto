@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace proyecto.Data.Entidades;
+namespace proyecto.Models;
 
 // Validaciones y nombres del formulario de consolas (Admin/CrearConsola y Admin/EditarConsola).
-// Va en un archivo aparte porque las clases de Data/Entidades las genera el scaffold:
+// Va en un archivo aparte porque Consola.cs lo genera el scaffold:
 // si se vuelve a correr, Consola.cs se reemplaza pero este archivo se conserva.
 [ModelMetadataType(typeof(ConsolaValidacion))]
 public partial class Consola

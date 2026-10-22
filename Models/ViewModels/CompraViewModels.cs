@@ -12,6 +12,6 @@ public class CompraViewModel
     public int Cantidad { get; set; } = 1;
 
     // Solo para mostrar en pantalla (se recargan del stock al comprar, nunca se confía en el formulario)
-    public StockListado? Producto { get; set; }
+    public Stock? Producto { get; set; }
     public decimal TasaIva { get; set; } = 0.16m;
 }

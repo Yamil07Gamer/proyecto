@@ -10,7 +10,7 @@ public class AdminInicioViewModel
     public int TotalUsuarios { get; set; }
     public int TotalAdmins { get; set; }
     public int UnidadesEnStock { get; set; }
-    public List<StockListado> StockBajo { get; set; } = new();
+    public List<Stock> StockBajo { get; set; } = new();
 }
 
 // Admin/CrearStock y Admin/EditarStock

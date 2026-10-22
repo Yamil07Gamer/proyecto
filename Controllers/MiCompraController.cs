@@ -1,17 +1,15 @@
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using proyecto.Data;
 using proyecto.Filters;
-using proyecto.Models;
 using proyecto.Models.ViewModels;
 
 namespace proyecto.Controllers;
 
 // Tienda:
-//   /MiCompra             catálogo (cualquier usuario, sp_listar_stock)
-//   /MiCompra/Confirmar   elegir cantidad y ver los cálculos (requiere sesión)
-//   /MiCompra/Ticket      resumen de la compra (sp_venta_general)
-//   /MiCompra/Historial   compras del usuario de la sesión
+//   /MiCompra                 catálogo (cualquier usuario)
+//   /MiCompra/Confirmar       elegir cantidad y ver los cálculos (requiere sesión)
+//   /MiCompra/Ticket/{folio}  resumen de una compra (sp_venta_general)
+//   /MiCompra/Historial       compras del usuario de la sesión
 public class MiCompraController : Controller
 {
     private readonly VentaConsolasDb _db;
@@ -39,9 +37,9 @@ public class MiCompraController : Controller
             TempData["Error"] = "Esa consola no está disponible.";
             return RedirectToAction(nameof(Index));
         }
-        if (!producto.Disponible)
+        if (producto.Existencias <= 0)
         {
-            TempData["Error"] = $"{producto.Consola} está agotada.";
+            TempData["Error"] = $"{producto.IdConsolaNavigation.Nombre} está agotada.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -78,30 +76,31 @@ public class MiCompraController : Controller
         try
         {
             // sp_venta_general: descuenta stock, crea la venta y su detalle y calcula IVA y total
-            var resumen = _db.VentaGeneral(IdSesion, vm.IdConsola, vm.Cantidad);
+            var folio = _db.VentaGeneral(IdSesion, vm.IdConsola, vm.Cantidad);
 
-            TempData["Ticket"] = JsonSerializer.Serialize(resumen);
-            return RedirectToAction(nameof(Ticket));
+            TempData["Exito"] = "¡Compra realizada!";
+            return RedirectToAction(nameof(Ticket), new { id = folio });
         }
         catch (ErrorNegocio ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
             vm.Producto = _db.ObtenerStockPorConsola(vm.IdConsola);
-            return View(vm);
+            return vm.Producto is null ? RedirectToAction(nameof(Index)) : View(vm);
         }
     }
 
+    // Solo se puede ver un ticket propio
     [RequiereSesion]
-    public IActionResult Ticket()
+    public IActionResult Ticket(int id)
     {
-        if (TempData["Ticket"] is not string json)
+        var venta = _db.ObtenerVenta(id, IdSesion);
+        if (venta is null)
+        {
+            TempData["Error"] = "No se encontró esa compra.";
             return RedirectToAction(nameof(Historial));
+        }
 
-        var resumen = JsonSerializer.Deserialize<ResumenVenta>(json);
-        if (resumen is null)
-            return RedirectToAction(nameof(Historial));
-
-        return View(resumen);
+        return View(venta);
     }
 
     [RequiereSesion]

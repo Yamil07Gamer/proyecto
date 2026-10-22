@@ -1,4 +1,4 @@
-@model List<StockListado>
+@model List<Stock>
 @{
     ViewData["Title"] = "Stock";
     var sinStock = (int)(ViewData["ConsolasSinStock"] ?? 0);
@@ -34,8 +34,8 @@
             @foreach (var s in Model)
             {
                 <tr>
-                    <td>@s.Consola</td>
-                    <td class="texto-tenue">@s.Modelo</td>
+                    <td>@s.IdConsolaNavigation.Nombre</td>
+                    <td class="texto-tenue">@s.IdConsolaNavigation.Modelo</td>
                     <td class="text-end">
                         @if (s.Existencias == 0)
                         {

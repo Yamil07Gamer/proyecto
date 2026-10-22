@@ -1,40 +1,36 @@
-@model ResumenVenta
+@model Ventum
 @{
     ViewData["Title"] = $"Compra #{Model.Folio}";
     var mx = new System.Globalization.CultureInfo("es-MX");
+    var iva = Model.Total - Model.Subtotal;
 }
 
 <div class="panel panel-medio">
     <div class="text-center mb-4">
-        <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
-        <h1 class="h3 mt-2 mb-1">¡Compra realizada!</h1>
-        <p class="texto-tenue mb-0">Folio <strong>#@Model.Folio</strong> · @Model.Cliente</p>
+        <i class="bi bi-receipt text-success" style="font-size: 3rem;"></i>
+        <h1 class="h3 mt-2 mb-1">Compra #@Model.Folio</h1>
+        <p class="texto-tenue mb-0">@Model.IdUsuarioNavigation.Nombre</p>
     </div>
 
     <table class="w-100 tabla-calculo">
-        <tr>
-            <td>Consola</td>
-            <td class="text-end">@Model.Consola</td>
-        </tr>
-        <tr>
-            <td>Cantidad</td>
-            <td class="text-end">@Model.Cantidad</td>
-        </tr>
-        <tr>
-            <td>Precio unitario</td>
-            <td class="text-end">@Model.PrecioUnitario.ToString("C", mx)</td>
-        </tr>
+        @foreach (var d in Model.VentaConsolas)
+        {
+            <tr>
+                <td>@d.Cantidad × @d.IdConsolaNavigation.Nombre</td>
+                <td class="text-end">@d.Subtotal.ToString("C", mx)</td>
+            </tr>
+        }
         <tr>
             <td>Subtotal</td>
-            <td class="text-end">@Model.SubtotalVenta.ToString("C", mx)</td>
+            <td class="text-end">@Model.Subtotal.ToString("C", mx)</td>
         </tr>
         <tr>
             <td>IVA</td>
-            <td class="text-end">@Model.Iva.ToString("C", mx)</td>
+            <td class="text-end">@iva.ToString("C", mx)</td>
         </tr>
         <tr class="total">
             <td>Total</td>
-            <td class="text-end precio">@Model.TotalVenta.ToString("C", mx)</td>
+            <td class="text-end precio">@Model.Total.ToString("C", mx)</td>
         </tr>
     </table>
 

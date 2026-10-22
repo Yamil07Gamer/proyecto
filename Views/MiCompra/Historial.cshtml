@@ -1,4 +1,4 @@
-@model List<CompraHistorial>
+@model List<Ventum>
 @{
     ViewData["Title"] = "Mis compras";
     var mx = new System.Globalization.CultureInfo("es-MX");
@@ -23,21 +23,28 @@ else
             <thead>
                 <tr>
                     <th>Folio</th>
-                    <th>Consola</th>
-                    <th class="text-end">Cantidad</th>
+                    <th>Consolas</th>
                     <th class="text-end">Subtotal</th>
                     <th class="text-end">Total con IVA</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var c in Model)
+                @foreach (var v in Model)
                 {
                     <tr>
-                        <td>#@c.Folio</td>
-                        <td>@c.Consola</td>
-                        <td class="text-end">@c.Cantidad</td>
-                        <td class="text-end">@c.Subtotal.ToString("C", mx)</td>
-                        <td class="text-end">@c.TotalVenta.ToString("C", mx)</td>
+                        <td>#@v.Folio</td>
+                        <td>
+                            @foreach (var d in v.VentaConsolas)
+                            {
+                                <div>@d.Cantidad × @d.IdConsolaNavigation.Nombre</div>
+                            }
+                        </td>
+                        <td class="text-end">@v.Subtotal.ToString("C", mx)</td>
+                        <td class="text-end">@v.Total.ToString("C", mx)</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" asp-action="Ticket" asp-route-id="@v.Folio">Ver</a>
+                        </td>
                     </tr>
                 }
             </tbody>

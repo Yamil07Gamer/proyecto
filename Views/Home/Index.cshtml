@@ -1,4 +1,4 @@
-﻿@inject proyecto.Data.VentaConsolasDb Db
+@inject proyecto.Data.VentaConsolasDb Db
 @{
     ViewData["Title"] = "Inicio";
     Layout = null;
@@ -7,7 +7,7 @@
 
     // Consolas destacadas: las primeras 6 con existencias (sp_listar_stock)
     var destacadas = Db.ListarStock()
-                       .Where(s => s.Disponible)
+                       .Where(s => s.Existencias > 0)
                        .OrderByDescending(s => s.PrecioUnitario)
                        .Take(6)
                        .ToList();
@@ -130,7 +130,7 @@
                 <div class="row align-items-center g-4">
                     <div class="col-md-8">
                         <h1 class="display-5 fw-bold">Tu próxima consola está aquí</h1>
-                        <p class="lead mb-4">
+                        <p class="lead mb-4" id="leyenda">
                             PlayStation, Xbox, Nintendo y Steam Deck al mejor precio.
                             Revisa existencias en tiempo real y compra en unos cuantos clics.
                         </p>
@@ -169,17 +169,17 @@
                     {
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 tarjeta-consola">
-                                @if (!string.IsNullOrWhiteSpace(s.Imagen))
+                                @if (!string.IsNullOrWhiteSpace(s.IdConsolaNavigation.Imagen))
                                 {
-                                    <img src="@Url.Content(s.Imagen)" class="card-img-top" alt="@s.Consola">
+                                    <img src="@Url.Content(s.IdConsolaNavigation.Imagen)" class="card-img-top" alt="@s.IdConsolaNavigation.Nombre">
                                 }
                                 else
                                 {
                                     <div class="imagen-consola-vacia card-img-top"><i class="bi bi-controller"></i></div>
                                 }
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title mb-1">@s.Consola</h5>
-                                    <p class="texto-tenue small mb-2">@s.Modelo</p>
+                                    <h5 class="card-title mb-1" id="blanco">@s.IdConsolaNavigation.Nombre</h5>
+                                    <p class="texto-tenue small mb-2">@s.IdConsolaNavigation.Modelo</p>
                                     <div class="precio mb-1">@s.PrecioUnitario.ToString("C", mx)</div>
                                     <p class="small text-success mb-3"><i class="bi bi-check-circle"></i> @s.Existencias disponibles</p>
                                     <a class="btn btn-primary mt-auto" asp-controller="MiCompra" asp-action="Confirmar" asp-route-idConsola="@s.IdConsola">

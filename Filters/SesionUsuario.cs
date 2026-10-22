@@ -1,4 +1,4 @@
-using proyecto.Data.Entidades;
+using proyecto.Models;
 
 namespace proyecto.Filters;
 

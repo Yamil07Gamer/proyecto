@@ -259,9 +259,7 @@ C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\rjsm
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\scopedcss\bundle\proyecto.styles.css
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\scopedcss\projectbundle\proyecto.bundle.scp.css
-C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\xggzhfp9yq-{0}-lugek5hnai-lugek5hnai.gz
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\jpjwwq9cxf-{0}-kqz2fk5tbv-kqz2fk5tbv.gz
-C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\q949t50q9d-{0}-1w3onpdb5p-1w3onpdb5p.gz
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\dnoe77bhgi-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\4dc3qfoav6-{0}-7pgxf1ye71-7pgxf1ye71.gz
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\jiw7wf25xz-{0}-fr7q2aak1r-fr7q2aak1r.gz
@@ -334,3 +332,5 @@ C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\swae
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\proyecto.csproj.Up2Date
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\proyecto.genruntimeconfig.cache
 C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\ref\proyecto.dll
+C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\xggzhfp9yq-{0}-c830x66vyk-c830x66vyk.gz
+C:\Users\César\Downloads\proyecto personal pweb\proyecto\obj\Debug\net10.0\compressed\q949t50q9d-{0}-c4uowkjjwz-c4uowkjjwz.gz

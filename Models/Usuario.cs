@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace proyecto.Data.Entidades;
+namespace proyecto.Models;
 
 public partial class Usuario
 {

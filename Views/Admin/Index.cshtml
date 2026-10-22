@@ -58,7 +58,7 @@ else
                 @foreach (var s in Model.StockBajo)
                 {
                     <tr>
-                        <td>@s.Consola <span class="texto-tenue small">@s.Modelo</span></td>
+                        <td>@s.IdConsolaNavigation.Nombre <span class="texto-tenue small">@s.IdConsolaNavigation.Modelo</span></td>
                         <td class="text-end">
                             <span class="badge @(s.Existencias == 0 ? "text-bg-danger" : "text-bg-warning")">@s.Existencias</span>
                         </td>

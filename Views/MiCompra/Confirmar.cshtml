@@ -16,16 +16,16 @@
 
     <div class="row g-4">
         <div class="col-md-5">
-            @if (!string.IsNullOrWhiteSpace(p.Imagen))
+            @if (!string.IsNullOrWhiteSpace(p.IdConsolaNavigation.Imagen))
             {
-                <img src="@Url.Content(p.Imagen)" class="rounded w-100 imagen-producto" alt="@p.Consola">
+                <img src="@Url.Content(p.IdConsolaNavigation.Imagen)" class="rounded w-100 imagen-producto" alt="@p.IdConsolaNavigation.Nombre">
             }
             else
             {
                 <div class="imagen-consola-vacia rounded"><i class="bi bi-controller"></i></div>
             }
-            <h2 class="h5 mt-3 mb-1">@p.Consola</h2>
-            <p class="texto-tenue small mb-1">@p.Modelo</p>
+            <h2 class="h5 mt-3 mb-1">@p.IdConsolaNavigation.Nombre</h2>
+            <p class="texto-tenue small mb-1">@p.IdConsolaNavigation.Modelo</p>
             <p class="small mb-0">@p.Existencias disponibles</p>
         </div>
 
