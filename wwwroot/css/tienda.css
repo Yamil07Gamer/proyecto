@@ -23,7 +23,7 @@
     border: 1px solid #3a3f4b;
     border-radius: 999px;
     padding: .2rem .7rem .2rem .35rem;
-    background-color: transparent;
+    background-color: #fff;
 }
 
 .btn-perfil .bi-person-circle {
@@ -248,4 +248,12 @@
     object-fit: contain;
     background-color: #11141a;
     padding: .75rem;
+}
+
+.beneficio, #leyenda, #blanco{
+    color: #fff;
+}
+
+.precio{
+    color: #00fff2
 }

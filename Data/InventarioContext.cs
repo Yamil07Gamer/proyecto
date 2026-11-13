@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using proyecto.Models;
 
-namespace proyecto.Data.Entidades;
+namespace proyecto.Data;
 
 public partial class InventarioContext : DbContext
 {

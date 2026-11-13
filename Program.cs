@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using proyecto.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,17 +16,11 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddHttpContextAccessor();
 
-// Capa de datos.
-// Por ahora funciona con datos de prueba en memoria (Singleton para que no se pierdan entre peticiones).
-// Cuando se conecte la base de datos, la cadena de conexión se toma de appsettings.json
-// ("ConnectionStrings:VentaConsolas") y se puede cambiar a AddScoped.
-builder.Services.AddSingleton<VentaConsolasDb>();
-
-// Contexto generado con el scaffold (Data/InventarioContext.cs). Desactivado por ahora.
-// Como se generó con --no-onconfiguring, la conexión se configura aquí:
-// builder.Services.AddDbContext<proyecto.Data.InventarioContext>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("VentaConsolas")));
-// (requiere: using Microsoft.EntityFrameworkCore;)
+// Base de datos: contexto del scaffold + capa que llama a los procedures.
+// La cadena se toma de appsettings.json -> ConnectionStrings:VentaConsolas
+builder.Services.AddDbContext<InventarioContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("VentaConsolas")));
+builder.Services.AddScoped<VentaConsolasDb>();
 
 var app = builder.Build();
 

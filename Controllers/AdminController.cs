@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using proyecto.Data;
-using proyecto.Data.Entidades;
 using proyecto.Filters;
 using proyecto.Models;
 using proyecto.Models.ViewModels;
@@ -29,7 +28,7 @@ public class AdminController : Controller
     public IActionResult Index()
     {
         var stock = _db.ListarStock();
-        var usuarios = _db.ListarUsuarios(IdSesion);
+        var usuarios = _db.ListarUsuarios();
 
         var vm = new AdminInicioViewModel
         {
@@ -237,7 +236,7 @@ public class AdminController : Controller
     public IActionResult Usuarios()
     {
         ViewData["IdSesion"] = IdSesion;
-        return View(_db.ListarUsuarios(IdSesion));
+        return View(_db.ListarUsuarios());
     }
 
     // Ventana de confirmación: pide la contraseña del admin que hace el cambio
